@@ -46,7 +46,7 @@ int main(int argc,char** argv){
 	SDL_Rect quad = {0,0};
 	
 	//posição inicial do seletor
-	SDL_Rect seletor = {410,360};
+	SDL_Rect seletor = {490,295};
 	SDL_Rect select_over={250,499};
 	SDL_Rect select_pause={217,362};
 	
@@ -90,6 +90,7 @@ int main(int argc,char** argv){
 	//Espaco
 	espaco =IMG_Load("src/fundo-jogo.png");
 	nuvens =IMG_Load("src/nuvens.png");
+	trocadenome_img=IMG_Load("src/troca_nome.png");
 	
 	//Nave
 	nave = IMG_Load("src/nave1.png");
@@ -125,6 +126,9 @@ int main(int argc,char** argv){
 	
 	//tela de pause
 	pause_screen=IMG_Load("src/tela-pause.png");
+	
+	//tela de creditos
+	creditos_img=IMG_Load("src/creditos.png");
 	
 	//barra pontuacao e multiplicadores
 	barra_pontuacao=IMG_Load("src/barra-pontuacao.png");
@@ -183,6 +187,7 @@ int main(int argc,char** argv){
 	int opcao_over = 1;
 	int opcao_pause =1;
 	int troca_nome=0;
+	int pagina_creditos=0;
 
 	while(menu != 0){
 					
@@ -190,8 +195,8 @@ int main(int argc,char** argv){
 		SDL_BlitSurface(escolha, NULL, janela, &seletor);
 		
 		sprintf(bemvindo_txt,"Jogando como: %s",nome_jogador);
-		escreverTexto(10,565,bemvindo_txt,255,255,255,12);
-		escreverTexto(10,580,"(para trocar pressione F7)",239,137,5,10);
+		escreverTexto(640,565,bemvindo_txt,255,255,255,12);
+		escreverTexto(640,580,"(para trocar pressione F7)",239,137,5,10);
 		
 		SDL_Flip(janela);
 
@@ -224,85 +229,102 @@ int main(int argc,char** argv){
 						case SDLK_DOWN:
 
 							//posicao de instrucoes
-							if(seletor.x == 410 && seletor.y == 360)
+							if(seletor.y == 295)
 							{
-								seletor.x = 410;
-								seletor.y = 396;
-								opcao = 2;
+								seletor.y = 340;
+								opcao = 4;
 								Mix_PlayChannel(-1,efeito,0);
 								break;
 							}
 
 							//posicao de ranking
-							if(seletor.x == 410 && seletor.y == 396)
+							if(seletor.y == 340)
 							{
-								seletor.x = 410;
-								seletor.y = 432;
-								Mix_PlayChannel(-1,efeito,0);
-								opcao = 4;
-								break;
-							}
-
-							//posicao de sair
-							if(seletor.x == 410 && seletor.y == 432)
-							{
-								seletor.x = 410;
-								seletor.y = 468;
-								Mix_PlayChannel(-1,efeito,0);
-								opcao = 5;
-								break;
-							}
-
-							//posicao de sair
-							if(seletor.x == 410 && seletor.y == 468)
-							{
-								seletor.x = 410;
-								seletor.y = 360;
-								Mix_PlayChannel(-1,efeito,0);
-								opcao = 1;
-								break;
-							}
-
-
-
-						//seta para cima
-						case SDLK_UP:
-
-							if(seletor.x == 410 && seletor.y == 360)
-							{
-								seletor.x = 410;
-								seletor.y = 468;
-								Mix_PlayChannel(-1,efeito,0);
-								opcao = 5;
-								break;
-							}
-
-							if(seletor.x == 410 && seletor.y == 396)
-							{
-								seletor.x = 410;
-								seletor.y = 360;
-								Mix_PlayChannel(-1,efeito,0);
-								opcao = 1;
-								break;
-							}
-
-							if(seletor.x == 410 && seletor.y == 432)
-							{
-								seletor.x = 410;
-								seletor.y = 396;
+								seletor.y = 390;
 								Mix_PlayChannel(-1,efeito,0);
 								opcao = 2;
 								break;
 							}
 
-							if(seletor.x == 410 && seletor.y == 468)
+							//posicao de sair
+							if(seletor.y ==390)
 							{
-								seletor.x = 410;
-								seletor.y = 432;
+								seletor.y = 440;
 								Mix_PlayChannel(-1,efeito,0);
-								opcao = 4;
+								opcao = 6;
 								break;
 							}
+
+							//posicao de sair
+							if(seletor.y == 440)
+							{
+								seletor.y = 485;
+								Mix_PlayChannel(-1,efeito,0);
+								opcao = 5;
+								break;
+							}
+							
+							if(seletor.y == 485)
+							{
+								seletor.y = 295;
+								Mix_PlayChannel(-1,efeito,0);
+								opcao = 1;
+								break;
+							}
+
+
+
+
+						//seta para cima
+						case SDLK_UP:
+							if(seletor.y == 295)
+							{
+								seletor.y = 485;
+								opcao = 5;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+							
+							if(seletor.y == 485)
+							{
+								seletor.y = 440;
+								opcao = 6;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+							
+							if(seletor.y == 440)
+							{
+								seletor.y = 390;
+								opcao = 2;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+							if(seletor.y==390)
+							{
+								seletor.y = 340;
+								opcao = 4;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+							
+								if(seletor.y==340)
+							{
+								seletor.y = 290;
+								opcao = 1;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+								if(seletor.y==290)
+							{
+								seletor.y = 485;
+								opcao = 5;
+								Mix_PlayChannel(-1,efeito,0);
+								break;
+							}
+
+							
+
 
 						case SDLK_F7:
 							troca_nome=1;
@@ -355,6 +377,9 @@ int main(int argc,char** argv){
 
 			else if(opcao == 5)
 				menu = 0;	
+			else if(opcao == 6)
+				pagina_creditos = 1;
+				
 		}
 		if(mute==1)
 		{
@@ -468,7 +493,6 @@ int main(int argc,char** argv){
 								break;
 								
 								case SDLK_RETURN:
-								pontuacao+=1000;
 								break;
 								
 								case SDLK_F8:
@@ -1705,16 +1729,14 @@ int main(int argc,char** argv){
 		}
 		
 		while(troca_nome == 1){
-			
-			SDL_FillRect(janela,NULL,0);
-			
+					
 			nome_ttf = TTF_RenderText_Blended(fonte2, nome_jogador, gray);
 			
-			escreverTexto(250,300,"Digite o novo nome:",255,255,255,24);
+			SDL_BlitSurface(trocadenome_img, NULL, janela, &quad);	
 			
 			SDL_BlitSurface(nome_ttf, NULL, janela, &rect_trocanome);
 			
-			//SDL_BlitSurface(gameover_screen, NULL, janela, &quad);	
+		
 			
 			//SDL_BlitSurface(escolha,NULL,janela,&select_over);
 			
@@ -1733,6 +1755,7 @@ int main(int argc,char** argv){
 						switch(event.key.keysym.sym){
 								
 							case SDLK_RETURN:
+								rewind(fo);
 								fprintf(fo,"%s \n", nome_jogador);							
 								troca_nome=0;
 								
@@ -2024,6 +2047,47 @@ int main(int argc,char** argv){
 				SDL_Delay(1000/FPS - (SDL_GetTicks() - start));
 		}
 		
+		
+		while(pagina_creditos == 1){
+			
+			SDL_FillRect(janela,NULL,0);
+			
+			SDL_BlitSurface(creditos_img, NULL, janela, &quad);	
+			
+			SDL_Flip(janela);
+			
+			SDL_Event event;
+		
+			while(SDL_PollEvent(&event)){
+			
+				switch(event.type){
+				
+					case SDL_QUIT:
+						menu = 0;
+						break;
+
+					case SDL_KEYDOWN:
+				
+						switch(event.key.keysym.sym){
+					
+							case SDLK_RETURN:
+								pagina_creditos = 0;
+								break;
+							case SDLK_ESCAPE:
+								pagina_creditos = 0;
+								break;	
+								
+							
+							default:
+								break;
+					}
+					default:
+						break;
+				}
+			}
+			if(1000/FPS > SDL_GetTicks() - start)
+				SDL_Delay(1000/FPS - (SDL_GetTicks() - start));
+		}
 		
 
 	}

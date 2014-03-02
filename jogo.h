@@ -1,6 +1,6 @@
 #define LARGURA 600
 #define ALTURA 800
-#define NOME "Batman: Asylum of Chaos"
+#define NOME "Batman: The Bat Revenge"
 #define N_VIDA 3
 
 typedef int bool;
@@ -27,8 +27,8 @@ typedef struct{
 
 
 SDL_Surface *home,*nave,*janela,*espaco,*temp,*angulonave,*texto,*tiro_nave,*tiro_rotated,*asteroide,*vida_img,*morcego,*morcego_medio,*explosao,*nuvens,*img_escudo,*tiro_animado,*gameover_screen,*barra_pontuacao,*rect_multiplicador;
-SDL_Surface *multi_1x,*multi_2x,*multi_4x,*multi_8x,*pause_screen,*transparencia,*mute_img,*mute_on_txt,*mute_off_txt,*nome_ttf;
-SDL_Surface *nave1,*nave2,*nave3,*nave4,*nave5,*nave6,*angulonave1,*angulonave2,*angulonave3,*angulonave4,*angulonave5;
+SDL_Surface *multi_1x,*multi_2x,*multi_4x,*multi_8x,*pause_screen,*transparencia,*mute_img,*mute_on_txt,*mute_off_txt,*nome_ttf,*creditos_img;
+SDL_Surface *nave1,*nave2,*nave3,*nave4,*nave5,*nave6,*angulonave1,*angulonave2,*angulonave3,*angulonave4,*angulonave5,*trocadenome_img;
 
 SDL_Event event;
 SDL_Rect espacot,navet,asteroide_img,part_asteroid,vida_posicao[3],rect_morcego[16],rect_morcego2[16],rect_morcego3[16],rect_explosao[16],rect_tiro[8],quadExplode;
@@ -38,7 +38,7 @@ SDL_Color white={255,255,255};
 SDL_Color gray={127,127,127};
 SDL_Color transparente={255,255,255,50};
 SDL_Rect rect_teste={400,400,100,100};
-SDL_Rect rect_trocanome={470,300,100,100};
+SDL_Rect rect_trocanome={290,268,100,100};
 SDL_Rect notificacao={400,70,58,11};
 
 //FILES
